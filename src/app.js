@@ -19,7 +19,7 @@ app.use(express.static(publicDirectoryPath)); //customize your server
 
 app.get('', (req, res) => {
     res.render('index', {
-        title: 'Weather App',
+        title: 'Weather',
         name: 'Jose Guerrero',
     });
 });
@@ -44,6 +44,22 @@ app.get('/weather', (req, res) => {
         forecast: 'It is snowing',
         location: 'Philadelphia'
     }]);
+});
+
+app.get('/help/*', (req, res) => {
+    res.render('404', {
+        title: '404',
+        errorMessage: 'Help article not found',
+        name: 'Jose Guerrero'
+    });
+});
+
+app.get('*', (req, res) => {
+    res.render('404', {
+        title: '404',
+        errorMessage: 'Page not found',
+        name: 'Jose Guerrero'
+    });
 });
 
 app.listen(3000, () => {
