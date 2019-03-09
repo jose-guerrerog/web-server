@@ -11,7 +11,23 @@ app.set('view engine', 'hbs');
 app.use(express.static(publicDirectoryPath)); //customize your server
 
 app.get('', (req, res) => {
-    res.render('index')
+    res.render('index', {
+        title: 'Weather App',
+        name: 'Jose Guerrero',
+    });
+});
+
+app.get('/about', (req, res) => {
+    res.render('about', {
+        title: 'About Me',
+        name: 'Jose Guerrero',
+    });
+});
+
+app.get('/help', (req, res) => {
+    res.render('help', {
+        message: 'Chau chau',
+    });
 });
 
 app.get('/weather', (req, res) => {
